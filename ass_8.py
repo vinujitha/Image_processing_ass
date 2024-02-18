@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 # Read the image
 image_path = "E:/5th semester/Image Processing/assignment_01_images/assignment_01_images/daisy.jpg"
+
 image = cv.imread(image_path)
 
 # Create a mask of zeros with dimensions same as the image
