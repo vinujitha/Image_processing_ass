@@ -1,8 +1,6 @@
 import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
-
-# Read the input image
 img = cv.imread("E:\\5th semester\\Image Processing\\assignment_01_images\\assignment_01_images\\highlights_and_shadows.jpg", cv.IMREAD_COLOR)
 
 # Convert the image from BGR to LAB color space
@@ -18,27 +16,15 @@ lab_corrected_image = cv.merge((L_corrected, a, b))
 # Convert the image back to the BGR color space
 corrected_img = cv.cvtColor(lab_corrected_image, cv.COLOR_LAB2RGB)
 img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
-# Convert images to RGB for display with matplotlib
-img_rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)
-corrected_img_rgb = cv.cvtColor(corrected_img, cv.COLOR_BGR2RGB)
-
-# Create a figure for images
-plt.figure(figsize=(10, 5))
-
-# Plot original and corrected images
-img_rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)
-plt.subplot(1, 2, 1)
-plt.imshow(img_rgb)
-plt.title('Original Image')
-plt.axis('off')
-
-plt.subplot(1, 2, 2)
-plt.imshow(corrected_img_rgb)
-plt.title('Gamma Corrected Image')
-plt.axis('off')
-
-plt.tight_layout()
-plt.savefig("E:\\5th semester\\Image Processing\\assignment_01_images\\assignment_01_images\\New folder\\gamma_correction_images.png")
+fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+axes[0].imshow(img)
+axes[0].set_title('Original Image')
+axes[0].axis('off')
+# Plot the transformed image
+axes[1].imshow(corrected_img)
+axes[1].set_title('Gamma corrected Image')
+axes[1].axis('off')
+plt.savefig("E:\\5th semester\\Image Processing\\assignment_01_images\\assignment_01_images\\New folder\\gamma_correction.png")
 plt.show()
 
 # Create a separate figure for histograms
@@ -62,4 +48,3 @@ plt.legend()
 plt.tight_layout()
 plt.savefig("E:\\5th semester\\Image Processing\\assignment_01_images\\assignment_01_images\\New folder\\gamma_correction_histograms.png")
 plt.show()
-

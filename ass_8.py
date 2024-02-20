@@ -3,23 +3,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Read the image
-image_path = "E:/5th semester/Image Processing/assignment_01_images/assignment_01_images/daisy.jpg"
-
-image = cv.imread(image_path)
-
+image = cv.imread("E://5th semester//Image Processing//assignment_01_images//assignment_01_images//daisy.jpg")
 # Create a mask of zeros with dimensions same as the image
 mask = np.zeros(image.shape[:2], np.uint8)
-
 # Initialize background and foreground models
 bgdModel = np.zeros((1,65), np.float64)
 fgdModel = np.zeros((1,65), np.float64)
-
 # Define rectangle for initial segmentation
 rect = (50, 50, 900, 500)
-
 # Apply GrabCut algorithm for the image
 cv.grabCut(image, mask, rect, bgdModel, fgdModel, 5, cv.GC_INIT_WITH_RECT)
-
 # Modify the mask to identify sure foreground and possible background
 mask2 = np.where((mask == 2) | (mask == 0), 0, 1).astype('uint8')
 
@@ -69,5 +62,5 @@ plt.subplot(2, 3, 6)
 plt.title('Composite Image')
 plt.imshow(cv.cvtColor(composite_image, cv.COLOR_BGR2RGB))
 plt.axis('off')
-
+plt.savefig("E:\\5th semester\\Image Processing\\assignment_01_images\\assignment_01_images\\New folder\\outputs.png")
 plt.show()
