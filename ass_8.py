@@ -15,18 +15,14 @@ rect = (50, 50, 900, 500)
 cv.grabCut(image, mask, rect, bgdModel, fgdModel, 5, cv.GC_INIT_WITH_RECT)
 # Modify the mask to identify sure foreground and possible background
 mask2 = np.where((mask == 2) | (mask == 0), 0, 1).astype('uint8')
-
 # Create the foreground and background images
 foreground_image = np.where(mask2[:, :, np.newaxis] == 1, image, 0)
 background_image = np.where(mask2[:, :, np.newaxis] == 0, image, 0)
-
 burred_background = cv.blur(background_image, (20,20))
 # Create a black background image with the same dimensions as the original image
 black_background = np.zeros_like(image)
-
 # Place the foreground image on the black background
 composite_image1 = cv.add(black_background, foreground_image)
-
 # Add the original foreground and background images using cv2.add
 composite_image = cv.add(composite_image1, burred_background)
 
