@@ -26,7 +26,7 @@ axes[1].set_title('Horizontal Sobel Filter image')
 axes[1].set_xticks([]), axes[1].set_yticks([])
 
 axes[2].imshow(sobel_vertical, cmap='gray')
-axes[2].set_title('Vertical Sobel Filterimage')
+axes[2].set_title('Vertical Sobel Filter image')
 axes[2].set_xticks([]), axes[2].set_yticks([])
 plt.savefig("E:\\5th semester\\Image Processing\\assignment_01_images\\assignment_01_images\\New folder\\sobel.png")
 plt.show()
